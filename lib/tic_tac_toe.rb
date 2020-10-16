@@ -49,18 +49,6 @@ def valid_move?(board, index)
   end
 end
 
-def turn(board, index, player)
-  puts "Please enter 1-9:"
-  user_input = gets.chomp
-  index = input_to_index(user_input)
-  if valid_move?(board, index) == true
-    move(board, index)
-    display_board(board)
-  else
-    turn(board)
-  end
-end
-
 def turn_count(board)
   turns = 0
   board.each do |space|
@@ -77,6 +65,18 @@ def current_player(board)
     return "X"
   else
     return "O"
+  end
+end
+
+def play(board)
+  until over?(board) == true
+    turn(board)
+  end
+
+  if won?(board)
+    puts "Congratulations #{winner(board)}!"
+  elsif draw?(board)
+    puts "Cats Game!"
   end
 end
 
