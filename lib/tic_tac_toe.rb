@@ -101,17 +101,17 @@ def won?(board)
 end
 
 
-  def full?(board)
+def full?(board)
     board.all? {|index|index == "X" || index == "O"}
-  end
+end
 
-  def draw?(board)
-    if !won?(board) && full?(board)
-      return true
-    else
-      return false
-    end
+def draw?(board)
+  if !won?(board) && full?(board)
+    return true
+  else
+    return false
   end
+end
 
 def over?(board)
   if won?(board) || full?(board) || draw?(board)
